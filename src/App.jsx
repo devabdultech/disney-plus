@@ -2,12 +2,12 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom'
 import { DotLoader } from 'react-spinners';
 import HomePage from './pages/HomePage';
-import MovieDetails from './pages/MovieDetails';
 import NoMatch from './pages/NoMatch';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'))
 const SignupPage = lazy(() => import('./pages/SignupPage'))
 const MoviePage = lazy(() => import('./pages/MoviePage'))
+const MovieDetails = lazy(() => import('./pages/MovieDetails'))
 
 function App() {
 
