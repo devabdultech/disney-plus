@@ -1,16 +1,17 @@
-import axios from 'axios'
-import useSWR from 'swr'
+import React from 'react'
+import axios from "axios";
+import useSWR from "swr";
 import { useNavigate } from 'react-router';
 import Thumbnail from './Thumbnail';
 
-const fetcher = async url => await axios.get(url).then(res => res.data.results)
+const other = ({MovID, GENRE, WHAT, head}) => {  
+  const fetcher = url => axios.get(url).then(res => res.data.results)
 
-const MoviesCollection = ({head, type}) => {
-    const {data, error} = useSWR(`https://api.themoviedb.org/3/movie/${type}?api_key=fbc959a6a8b5d0ae76320f65d73baa22&language=en-US&page=1`, fetcher)
-    const navigate = useNavigate();
-    
+  const {data, error} = useSWR(`https://api.themoviedb.org/3/${GENRE}/${MovID}/${WHAT}?api_key=fbc959a6a8b5d0ae76320f65d73baa22&language=en-US`, fetcher)
+  const navigate = useNavigate();
+
   return (
-    <div className=''>
+    <div>
         <h1 className='xl:text-xl font-medium mb-2'>{head}</h1>
         <div className="flex space-x-4 xl:space-x-6 overflow-y-hidden overflow-x-scroll scrollbar-hide p-2 -m-2">
             {data?.map(d => (
@@ -23,4 +24,4 @@ const MoviesCollection = ({head, type}) => {
   )
 }
 
-export default MoviesCollection
+export default other
