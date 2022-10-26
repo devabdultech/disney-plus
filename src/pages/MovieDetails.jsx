@@ -15,10 +15,11 @@ const MovieDetails = () => {
   const ID = location.state.id;
   const GENRE = location.state.genre;
   const TITLE = location.state.title;
+  const api = import.meta.env.VITE_APP_TMDB_API_KEY;
 
   const fetcher = url => axios.get(url).then(res => res.data)
 
-  const {data, error} = useSWR(`https://api.themoviedb.org/3/${GENRE}/${ID}?api_key=fbc959a6a8b5d0ae76320f65d73baa22&language=en-US`, fetcher)
+  const {data, error} = useSWR(`https://api.themoviedb.org/3/${GENRE}/${ID}?api_key=${api}&language=en-US`, fetcher)
 
   if (error) return <div>Request Failed</div>;
   if (!data) return <DotLoader className="w-full mx-auto mt-36" color="#36d7b7" />

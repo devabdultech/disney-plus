@@ -6,7 +6,9 @@ import Thumbnail from './Thumbnail';
 const fetcher = async url => await axios.get(url).then(res => res.data.results)
 
 const MoviesCollection = ({head, type}) => {
-    const {data, error} = useSWR(`https://api.themoviedb.org/3/movie/${type}?api_key=fbc959a6a8b5d0ae76320f65d73baa22&language=en-US&page=1`, fetcher)
+    const api = import.meta.env.VITE_APP_TMDB_API_KEY;
+
+    const {data, error} = useSWR(`https://api.themoviedb.org/3/movie/${type}?api_key=${api}&language=en-US&page=1`, fetcher)
     const navigate = useNavigate();
     
   return (
