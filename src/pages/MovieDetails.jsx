@@ -76,7 +76,7 @@ const MovieDetails = () => {
         
       </div>
 
-      <OtherCollections id={ID} />
+      <OtherCollections id={ID} title={GENRE} />
 
     </div>
   )
