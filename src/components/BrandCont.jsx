@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 const BrandCont = ({image, imageAlt, video, videoType}) => {
   return (
     <motion.div 
-        className='border relative rounded-md xl:rounded-xl z-10 cursor-pointer overflow-hidden bg-[#1a1d29] shadow-2xl shadow-black'
+        className='border relative rounded-md md:rounded-md lg:rounded-lg xl:rounded-xl z-10 cursor-pointer overflow-hidden bg-[#1a1d29] shadow-2xl shadow-black'
         whileHover={{scale: 1}}
         initial={{scale: 0.9}}
         transition={{duration: 0.2, easings: ["backOut", "backIn"]}}
