@@ -4,6 +4,7 @@ import logo from '../assets/logo.svg';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { signUp } from '../firebase';
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -34,7 +35,7 @@ const SignupPage = () => {
             to watch your favourite shows and movies.
         </p>
 
-        <form onSubmit={handleSubmit()} className='flex flex-col gap-5 xl:gap-2'>
+        <form onSubmit={handleSubmit(signUp)} className='flex flex-col gap-5 xl:gap-2'>
             <input placeholder='Email Address' className='bg-[#30333e] px-3 py-2 xl:text-lg xl:px-3 xl:py-3 xl:rounded-md outline-none' {...register('email')} />
             <p>{errors.email?.message}</p>
 

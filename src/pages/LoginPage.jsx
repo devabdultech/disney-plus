@@ -1,10 +1,14 @@
 import { Helmet } from 'react-helmet';
 import logo from '../assets/logo.svg';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import GoogleIcon from '../assets/search.png';
+import { auth, signInPopup, signIn } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
+
 
 const schema = yup.object({
   email: yup.string().email().required(),
@@ -14,6 +18,18 @@ const schema = yup.object({
 
 const LoginPage = () => {
   const { register, handleSubmit, formState:{ errors } } = useForm({resolver: yupResolver(schema)});
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if(user) {
+        navigate('/movies')
+      } else {
+          
+      }
+    })
+  })
+
 
   return (
     <div className='bg-[#1a1d29] h-screen'>
@@ -33,7 +49,7 @@ const LoginPage = () => {
             You will use this email and password to log into your Disney+ account 
             to watch your favourite shows and movies.
         </p>
-        <form className='flex flex-col gap-3 xl:gap-2'>
+        <form onClick={handleSubmit(signIn)} className='flex flex-col gap-3 xl:gap-2'>
             <input placeholder='Email Address' className='bg-[#30333e] px-3 py-2 xl:text-lg xl:px-3 xl:py-3 xl:rounded-md outline-none' {...register('email')} />
             <p>{errors.email?.message}</p>
             <input placeholder='Password' className='bg-[#30333e] px-3 py-2 xl:text-lg xl:px-3 xl:py-3 xl:rounded-md outline-none' {...register('password')} />
@@ -41,11 +57,12 @@ const LoginPage = () => {
             
             <input className='bg-[#0072d2] rounded-md cursor-pointer uppercase font-medium py-2 xl:text-xl xl:py-3' type='submit' value='Sign In' />
         </form>
+
         <p className='text-center'>Or</p>
         <div className='flex flex-col gap-4 w-full'>
             <button className='flex justify-center items-center gap-3 bg-white w-full py-3 rounded-lg cursor-pointer'>
                 <img className='w-6' src={GoogleIcon} alt="google-icon" />
-                <span className='text-lg text-black font-sbold'>Continue with Google</span>
+                <span onClick={signInPopup} className='text-lg text-black font-sbold'>Continue with Google</span>
             </button>
         </div>
         <p>New to Disney+? <Link to='/signup'>Sign up</Link> </p> 
