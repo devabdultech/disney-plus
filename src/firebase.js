@@ -19,12 +19,9 @@ const signUp = ({email, password}) => {
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCred) => {
     const user = userCred.user;
-    console.log(user)
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode)
-    console.log(errorMessage)
   })
 }
 
@@ -32,12 +29,9 @@ const signIn = ({email, password}) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCred) => {
     const user = userCred.user;
-    console.log(user)
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode)
-    console.log(errorMessage)
   })
 }
 
@@ -47,27 +41,19 @@ const signInPopup = () => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    console.log(user)
-    console.log(token)
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     const email = error.customData.email;
     const credential = GoogleAuthProvider.credentialFromError(error);
-    console.log(errorCode)
-    console.log(errorMessage)
-    console.log(email)
   })
 }
 
 const SignOut = () => {
   signOut(auth).then(() => {
-    console.log('Signout success')
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode)
-    console.log(errorMessage)
   });
 }
 
