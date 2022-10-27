@@ -60,7 +60,7 @@ const LoginPage = () => {
 
         <p className='text-center'>Or</p>
         <div className='flex flex-col gap-4 w-full'>
-            <button className='flex justify-center items-center gap-3 bg-white w-full py-3 rounded-lg cursor-pointer'>
+            <button className='flex justify-center items-center gap-3 bg-white w-full py-3 rounded-lg cursor-pointer hover:scale-105 transition '>
                 <img className='w-6' src={GoogleIcon} alt="google-icon" />
                 <span onClick={signInPopup} className='text-lg text-black font-sbold'>Continue with Google</span>
             </button>

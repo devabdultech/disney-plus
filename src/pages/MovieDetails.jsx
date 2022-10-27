@@ -5,10 +5,12 @@ import { useLocation } from "react-router-dom";
 import { DotLoader } from 'react-spinners';
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.svg';
+import logout from '../assets/logout.svg';
 import playWhite from '../assets/play-icon-white.svg';
 import playBlack from '../assets/play-icon-black.svg';
 import groupIcon from '../assets/group-icon.svg';
 import OtherCollections from "../components/OtherCollections";
+import{auth, SignOut} from "../firebase" 
 
 const MovieDetails = () => {
   const location = useLocation()
@@ -20,6 +22,7 @@ const MovieDetails = () => {
   const fetcher = url => axios.get(url).then(res => res.data)
 
   const {data, error} = useSWR(`https://api.themoviedb.org/3/${GENRE}/${ID}?api_key=${api}&language=en-US`, fetcher)
+  const user = auth.currentUser;
 
   if (error) return <div>Request Failed</div>;
   if (!data) return <DotLoader className="w-full mx-auto mt-36" color="#36d7b7" />
@@ -32,7 +35,8 @@ const MovieDetails = () => {
 
       <nav className='flex justify-between items-center'>
         <Link to="/"><img className='w-24' src={logo} alt="logo" /></Link>
-        <button>Sign out</button>
+        
+        <Link to='/movies'>Home</Link>
       </nav>
 
       <div className="relative mt-8 min-h-[600px] xl:min-h-[550px]">  

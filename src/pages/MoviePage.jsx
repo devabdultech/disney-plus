@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.svg'
+import logout from '../assets/logout.svg'
 import Brands from '../components/Brands'
 import SliderCarousel from '../components/SliderCarousel'
 import Collections from '../components/Collections'
@@ -33,8 +34,8 @@ const MoviePage = () => {
       <nav className='flex justify-between items-center'>
         <Link to="/"><img className='w-24' src={logo} alt="logo" /></Link>
 
-        <button className="rounded-full border w-14" onClick={SignOut}>
-          <img className='w-full rounded-full' src={user?.photoURL} alt='display-photo' />
+        <button className="rounded-full border w-14 p-1 cursor-pointer" onClick={SignOut}>
+          <img className='w-full rounded-full ' src={user?.photoURL || logout } alt='display-photo' />
         </button>
       </nav>
       <SliderCarousel />
