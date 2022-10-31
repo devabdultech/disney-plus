@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
 import logo from '../assets/logo.svg';
 import down from '../assets/down.svg';
+import bgSmall from '../assets/bg-small.jpg';
+import bgMedium from '../assets/bg-medium.jpg';
+import bgLarge from '../assets/bg-large.jpg';
+
 
 const Hero = () => {
   return (
-    <section className='relative flex items-center text-center h-screen xl:items-left xl:text-left xl:h-screen'>
+    <section className='relative flex items-center text-center h-screen md:items-center xl:items-left xl:text-left xl:h-screen 2xl:w-full'>
         <div className="content z-10 px-3 mt-44 pb-8 w-full max-w-xl md:w-[100%] md:mt-44 md:mx-auto xl:w-[100%] xl:mt-24 xl:mx-0 xl:px-16">
             <img className='w-32 mx-auto mb-4 lg:w-36 xl:w-48 xl:mx-0 xl:mb-9' src={logo} alt="disney+ logo" />
             <h1 className='mb-4 text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-sbold lg:mb-5 xl:mb-6'>+ More than you'd ever imagine</h1>
@@ -26,7 +30,11 @@ const Hero = () => {
               <img className='w-10' src={down} alt="down-arrow" />
             </motion.button>
         </div>
-        <div className="background absolute left-0 bottom-0 right-0 top-0 bg-bgSmall bg-top bg-100 bg-no-repeat z-0 md:bg-bgMedium xl:bg-bgLarge"></div>
+        <div className="absolute left-0 bottom-0 right-0 top-0 bg-top bg-100 bg-no-repeat z-0">
+          <img className='md:hidden xl:hidden' src={bgSmall} alt="background" />
+          <img className='hidden sm:hidden xl:hidden md:block' src={bgMedium} alt="background" />
+          <img className='hidden sm:hidden md:hidden xl:block' src={bgLarge} alt="background" />
+        </div>
     </section>
   )
 }

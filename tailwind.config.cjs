@@ -23,14 +23,6 @@ module.exports = {
         // => @media (min-width: 1536px) { ... }
       },
 
-      backgroundImage: {
-        bgSmall: "url('./src/assets/bg-small.jpg')",
-        bgMedium: "url('./src/assets/bg-medium.jpg')",
-        bgLarge: "url('./src/assets/bg-large.jpg')",
-        imageSmall: "url('./src/assets/image-1-small.jpg')",
-        imageBig: "url('./src/assets/image-1.jpg')",
-      },
-
       backgroundSize: {
         '100': '100%',
       },
