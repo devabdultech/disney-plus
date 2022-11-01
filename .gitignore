@@ -25,6 +25,7 @@ VITE_*
 *.sw?
 
 # Local env file
+*.env
 .env
 .env.local
 .env.development.local
